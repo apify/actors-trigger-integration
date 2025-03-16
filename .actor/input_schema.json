@@ -1,0 +1,51 @@
+{
+    "title": "Trigger Make.com scenario",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "zoneUrl": {
+            "title": "Zone URL",
+            "type": "string",
+            "description": "Enter your Zone URL. For example https://eu1.make.com/ to find your Zone URL follow the steps in this guide: https://developers.make.com/api-documentation/getting-started/api-structure#base-url",
+            "editor": "textfield",
+            "pattern": "^https://[a-z0-9-.]+/$"
+        },
+        "apiToken": {
+            "title": "API Token",
+            "type": "string",
+            "description": "Enter your Make.com API token. The token must have the following permissions: `scenarios:read`, `scenarios:write` and `scenarios:trigger`",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "scenarioId": {
+            "title": "Scenario ID",
+            "type": "string",
+            "description": "Enter the ID of the Make.com scenario you wish to trigger.",
+            "editor": "textfield"
+        },
+        "data": {
+            "title": "Data passed to the Make.com scenario",
+            "type": "object",
+            "description": "Enter any data you wish to pass to the scenario when it's triggered. If you wish to add additional data to it from the output of Actor run, check the `Advanced` section.",
+            "prefill": {},
+            "default": {},
+            "editor": "json"
+        },
+        "runId": {
+            "sectionCaption": "Advanced - Use data from Actor run",
+            "sectionDescription": "If you wish to use data from the Actor run to trigger the Make.com scenario, you can enter the run ID here. And then use the `transformFunction` to access the data from the Actor run and add it to the data object passed to the Make.com scenario.",
+            "title": "Run ID",
+            "type": "string",
+            "description": "Enter the ID of the Actor run you wish to use as source of additional data for the Make.com scenario.",
+            "editor": "textfield"
+        },
+        "transformFunction": {
+            "title": "Transform function",
+            "type": "string",
+            "description": "A JavaScript function which will be executed with the `data`, `run`, `dataset` and `keyValueStore` objects as arguments (if valid existing run ID is provided).",
+            "prefill": "/**\n * @param data - The data object provided as input\n * @param run - Ouput of Get run API call @see https://docs.apify.com/api/v2/actor-run-get#responses\n * @param dataset - Dataset class instance @see https://docs.apify.com/sdk/js/reference/class/Dataset\n * @param keyValueStore - KeyValueStore class instance @see https://docs.apify.com/sdk/js/reference/class/KeyValueStore\n * @returns The transformed data object which will be passed to the Make.com scenario\n */\nasync function transformFunction(data, run, dataset, keyValueStore) {\n    // const datasetData = await dataset.getData();\n    // const { items } = datasetData;\n    return data;\n}",
+            "editor": "javascript"
+        }
+    },
+    "required": ["zoneUrl", "apiToken", "scenarioId", "data"]
+}

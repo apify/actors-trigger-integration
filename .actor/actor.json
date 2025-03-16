@@ -1,0 +1,12 @@
+{
+	"actorSpecification": 1,
+	"name": "trigger-make-scenario",
+	"title": "Trigger Make.com scenario",
+	"description": "This Actor allows you to trigger Make.com scenarios optionally using data from a run from a different Actor.",
+	"version": "0.0",
+	"meta": {
+		"templateId": "ts-start"
+	},
+	"input": "./input_schema.json",
+	"dockerfile": "./Dockerfile"
+}
