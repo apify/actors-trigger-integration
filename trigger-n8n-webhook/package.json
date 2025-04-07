@@ -1,10 +1,10 @@
 {
-	"name": "trigger-make-scenario",
+	"name": "trigger-n8n-webhook",
 	"version": "0.0.1",
 	"type": "module",
-	"description": "This Actor allows you to trigger Make.com scenarios optionally using data from a run from a different Actor",
+	"description": "This Actor allows you to Trigger N8N webhooks optionally using data from a run from a different Actor",
 	"engines": {
-		"node": ">=18.0.0"
+		"node": ">=20.0.0"
 	},
 	"dependencies": {
 		"apify": "^3.2.6"
@@ -22,9 +22,8 @@
 		"start": "npm run start:dev",
 		"start:prod": "node dist/main.js",
 		"start:dev": "tsx src/main.ts",
-		"build": "tsc",
-		"test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
+		"build": "tsc"
 	},
-	"author": "It's not you it's me",
+	"author": "Jaroslav Hejlek",
 	"license": "ISC"
 }

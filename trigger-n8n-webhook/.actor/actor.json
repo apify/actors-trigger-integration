@@ -1,0 +1,12 @@
+{
+	"actorSpecification": 1,
+	"name": "trigger-n8n-webhook",
+	"title": "Trigger N8N webhook",
+	"description": "This Actor allows you to Trigger N8N webhooks optionally using data from a run from a different Actor.",
+	"version": "0.0",
+	"meta": {
+		"templateId": "ts-start"
+	},
+	"input": "./input_schema.json",
+	"dockerfile": "./Dockerfile"
+}

@@ -1,0 +1,38 @@
+{
+    "title": "Trigger Zapier webhook",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "webhookUrl": {
+            "title": "Zapier webhook URL",
+            "type": "string",
+            "description": "Enter your Zapier webhook URL. The URL should start with `https://hooks.zapier.com/hooks/catch/`",
+            "editor": "textfield",
+            "pattern": "^https://hooks.zapier.com/hooks/catch/.+$"
+        },
+        "data": {
+            "title": "Data passed to the Zapier webhook",
+            "type": "object",
+            "description": "Enter any data you wish to pass to the webhook when it's triggered. If you wish to add additional data to it from the output of Actor run, check the `Advanced` section.",
+            "prefill": {},
+            "default": {},
+            "editor": "json"
+        },
+        "runId": {
+            "sectionCaption": "Advanced - Use data from Actor run",
+            "sectionDescription": "If you wish to use data from the Actor run to trigger the Zapier webhook, you can enter the run ID here. And then use the `transformFunction` to access the data from the Actor run and add it to the data object passed to the Zapier webhook.",
+            "title": "Run ID",
+            "type": "string",
+            "description": "Enter the ID of the Actor run you wish to use as source of additional data for the Zapier webhook.",
+            "editor": "textfield"
+        },
+        "transformFunction": {
+            "title": "Transform function",
+            "type": "string",
+            "description": "A JavaScript function which will be executed with the `data`, `run`, `dataset` and `keyValueStore` objects as arguments (if valid existing run ID is provided).",
+            "prefill": "/**\n * @param data - The data object provided as input\n * @param run - Ouput of Get run API call @see https://docs.apify.com/api/v2/actor-run-get#responses\n * @param dataset - Dataset class instance @see https://docs.apify.com/sdk/js/reference/class/Dataset\n * @param keyValueStore - KeyValueStore class instance @see https://docs.apify.com/sdk/js/reference/class/KeyValueStore\n * @returns The transformed data object which will be passed to the Zapier webhook\n */\nasync function transformFunction(data, run, dataset, keyValueStore) {\n    // const datasetData = await dataset.getData();\n    // const { items } = datasetData;\n    return data;\n}",
+            "editor": "javascript"
+        }
+    },
+    "required": ["webhookUrl", "data"]
+}
