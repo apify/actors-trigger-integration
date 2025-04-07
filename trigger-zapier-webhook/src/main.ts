@@ -60,7 +60,7 @@ try {
     const runScenarioResponse = await apiCall(webhookUrl, data);
     if (runScenarioResponse.status !== 'success') throw new Error('Failed to trigger webhook');
 } catch (error) {
-    log.exception(error, 'Failed to trigger webhook');
+    log.exception(error as Error, 'Failed to trigger webhook');
     await Actor.fail(`Failed to trigger webhook`);
 }
 
